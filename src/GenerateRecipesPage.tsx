@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const colors = {
   background: '#DDBEA9',  // Beige background
-  buttonBg: '#8C9A8E',    // Sage green for container
+  buttonBg: '#8C9A8E',    // Sage green for containers
   buttonLight: '#D3D3C7'  // Light sage for buttons
 };
 
