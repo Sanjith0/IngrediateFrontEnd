@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { UserCircle } from 'lucide-react'; // Add this import
+import AccountSettings from './AccountSettings'; // Add this import
 
 const colors = {
   background: '#DDBEA9',  // Beige background
@@ -11,6 +13,14 @@ const GenerateRecipesPage: React.FC = () => {
   const [newIngredient, setNewIngredient] = useState<string>('');
   const [showRecipes, setShowRecipes] = useState<boolean>(false); // Toggle to show recipes
   const [hasGeneratedOnce, setHasGeneratedOnce] = useState<boolean>(false); // Track if generate was clicked at least once
+  const [currentPage, setCurrentPage] = useState('recipes');
+  const handleProfileClick = () => {
+    setCurrentPage('settings');
+  };
+  if (currentPage === 'settings') {
+    return <AccountSettings onBack={() => setCurrentPage('recipes')} />;
+  }
+
 
   const handleAddIngredient = () => {
     if (newIngredient.trim() && !ingredients.includes(newIngredient.trim())) {
@@ -37,6 +47,23 @@ const GenerateRecipesPage: React.FC = () => {
       className="min-h-screen flex flex-col items-center p-10"
       style={{ backgroundColor: colors.background }}
     >
+    {/* Add this profile button in your header section */}
+    <div className="w-full flex justify-between items-start mb-8">
+        <div className="text-center flex-grow">
+        </div>
+        <button
+          onClick={handleProfileClick}
+          className="p-2 rounded-full transition-all hover:scale-110"
+          style={{ 
+            backgroundColor: colors.buttonLight,
+            position: 'absolute',
+            right: '40px',
+            top: '40px'
+          }}
+        >
+          <UserCircle size={32} />
+        </button>
+      </div>  
       {/* Title */}
       <div className="text-center mb-16">
         <h1 

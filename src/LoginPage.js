@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Camera, ChevronRight, User, Lock, Loader2, ArrowRight, Mail, UserPlus } from 'lucide-react';
 import './LoginPage.css'
 import GenerateRecipesPage from './GenerateRecipesPage.tsx';
+import bannerPNG from './kitchenBanner.png';
 
 const LoginPage = () => {
   const [isLoginClicked, setIsLoginClicked] = useState(false);
@@ -134,7 +135,8 @@ const LoginPage = () => {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '20px',
+      padding: '0px',
+      paddingTop: '210px',
       transition: 'all 0.5s ease'
     }}>
       {/* Error Message Popup */}
@@ -469,7 +471,11 @@ const LoginPage = () => {
             Back to menu
           </button>
         )}
+        
       </div>
+      <div className="w-full mt-auto">
+          <img src={bannerPNG} alt="Banner" className="w-full h-auto" style={{ objectFit: 'cover' }} />
+        </div>
     </div>
   );
   
