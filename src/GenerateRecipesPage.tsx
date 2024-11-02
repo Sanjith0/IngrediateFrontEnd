@@ -125,10 +125,16 @@ const GenerateRecipesPage: React.FC = () => {
   const [selectedLanguage, setSelectedLanguage] = useState<string>('English');
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const [clicked, setClicked] = useState(false);
+  const [isLogoActive, setIsLogoActive] = useState(false);
 
   const handleButtonClick = () => {
     setClicked(true);
     handleGenerateRecipes(); // Call your original function here
+  };
+
+  const handleLogoClick = () => {
+    setIsLogoActive((prev) => !prev);
+    
   };
 
   const handleAddIngredient = () => {
@@ -212,7 +218,20 @@ const GenerateRecipesPage: React.FC = () => {
             Turning Nothing, Into Something.
           </p>
         </div>
-        <img src={logoImage} alt="Logo" className="w-16 h-16" />
+        {/* Logo button with transparent background, hover, and click effect */}
+        <button
+            onClick={handleLogoClick}
+            className={`p-0 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 transform transition-transform duration-200 ${
+              isLogoActive ? 'ring-[#B7B7A4]' : 'ring-transparent'
+            } hover:scale-110`}
+            style={{
+              backgroundColor: 'transparent',
+              border: 'none',
+              outline: 'none',
+            }}
+          >
+            <img src={logoImage} alt="Logo" className="w-16 h-16" />
+          </button>
       </div>
 
 
