@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { UserCircle } from 'lucide-react'; // Add this import
 import AccountSettings from './AccountSettings'; // Add this import
-
+// updated
 const colors = {
   background: '#DDBEA9',  // Beige background
   buttonBg: '#8C9A8E',    // Sage green for container
