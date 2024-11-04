@@ -49,7 +49,12 @@ const buttonBaseStyle = {
   transition: 'all 0.3s ease',
 };
 
-const AccountSettings = () => {
+interface AccountSettingsProps {
+  onBack: () => void;
+}
+
+
+const AccountSettings: React.FC<AccountSettingsProps> = ({ onBack }) => {
   // State Management
   const [profileImage, setProfileImage] = useState(null);
   const [editMode, setEditMode] = useState(false);
@@ -458,7 +463,7 @@ const AccountSettings = () => {
           gap: '16px',
           marginTop: '24px'
         }}>
-          <button style={buttonBaseStyle}>
+          <button onClick={onBack} style={buttonBaseStyle}>
             <ArrowLeft size={20} />
             Back
           </button>
