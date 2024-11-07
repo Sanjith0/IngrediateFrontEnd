@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { UserCircle } from 'lucide-react'; // Add this import
 import logoImage from './accountLogo.png';
 import avocadoImage from './img/avocadoToast.jpg';
 import pastaImage from './img/gbChicken.jpg';
@@ -9,8 +8,8 @@ import honeyGarlicChickenImage from './img/hgc.jpg';
 import blackBeanTacosImage from './img/bbtacos.jpg';
 import bananaBreadImage from './img/bbread.jpg';
 import shrimpSkilletImage from './img/ss.jpg';
-import AccountSettings from './AccountSettings.tsx'; // Add this import
-import CameraDetection from './CameraDetection.tsx';
+import { UserCircle } from 'lucide-react'; // Add this import
+import AccountSettings from './AccountSettings'; // Add this import
 // updated
 
 import bannerPNG from './kitchenBanner.png';
@@ -20,7 +19,6 @@ const colors = {
   buttonBg: '#6B705C',
   buttonLight: '#D3D3C7',
 };
-
 
 const languages = ['English', 'Spanish', 'French', 'Italian'];
 
@@ -139,7 +137,6 @@ const GenerateRecipesPage: React.FC = () => {
 
   const handleLogoClick = () => {
     setIsLogoActive((prev) => !prev);
-    setCurrentPage('settings');
     
   };
 
@@ -205,7 +202,6 @@ const GenerateRecipesPage: React.FC = () => {
     }
     return "Generate Again!";
   };
-  const [currentPage, setCurrentPage] = useState('recipes');
   const handleProfileClick = () => {
     setCurrentPage('settings');
   };
@@ -223,7 +219,23 @@ const GenerateRecipesPage: React.FC = () => {
       }}
     >
     <div className="p-10 h-screen w-screen flex flex-col items-center">
-    
+    {/* Add this profile button in your header section */}
+    <div className="w-full flex justify-between items-start mb-8">
+        <div className="text-center flex-grow">
+        </div>
+        <button
+          onClick={handleProfileClick}
+          className="p-2 rounded-full transition-all hover:scale-110"
+          style={{ 
+            backgroundColor: colors.buttonLight,
+            position: 'absolute',
+            right: '40px',
+            top: '40px'
+          }}
+        >
+          <UserCircle size={32} />
+        </button>
+      </div>  
       {/* Header with Title, Tagline, and Logo */}
       <div className="w-full flex justify-between items-center mb-4">
         <div>
@@ -259,24 +271,6 @@ const GenerateRecipesPage: React.FC = () => {
         >
           Digital Pantry
         </h2>
-        {/* Camera Detection Component */}
-        <div className="mb-4">
-          <CameraDetection 
-            onIngredientsDetected={(detectedIngredients) => {
-              // Add all detected ingredients
-              detectedIngredients.forEach(ingredient => {
-                if (!ingredients.includes(ingredient)) {
-                  setIngredients(prev => [...prev, ingredient]);
-                }
-              });
-              // Optionally trigger recipe generation after ingredients are added
-              if (detectedIngredients.length > 0) {
-                setShowRecipes(false); // Reset recipes view
-                setHasGeneratedOnce(false); // Reset generation state
-              }
-            }} 
-          />
-        </div>
 
           <div className="flex space-x-2 mb-4">
             <input
