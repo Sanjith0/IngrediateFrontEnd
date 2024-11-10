@@ -11,8 +11,8 @@ interface POIMaxScores {
 // Define specific place types we care about
 const IMPORTANT_PLACES: POIWeights = {
   // Shopping
-  'grocery_or_supermarket': 10,    // Kroger, Walmart, etc.
-  'supermarket': 10,               // Additional tag for supermarkets
+  'grocery_or_supermarket': 5,    // Kroger, Walmart, etc.
+  'supermarket': 5,               // Additional tag for supermarkets
   'shopping_mall': 5,              // Major shopping centers
   'convenience_store': 2,          // Lower weight for convenience stores
   
@@ -27,8 +27,8 @@ const IMPORTANT_PLACES: POIWeights = {
   'school': 8,                     // General schools
   
   // Parks
-  'park': 6,                       // Public parks
-  'playground': 4,                 // Playgrounds
+  'park': 1,                       // Public parks
+  'playground': 2,                 // Playgrounds
   
   // Transport
   'transit_station': 5,            // Major transit stations
@@ -545,7 +545,7 @@ const PropertyAssessmentTool: React.FC = () => {
         const MAX_CATEGORY_SCORES: POIMaxScores = {
           shopping: 50,      // Major focus on retail availability
           restaurant: 38,    // Important but not critical
-          school: 63,        // High importance for families
+          school: 10,        // High importance for families
           park: 25,          // Good for community value
           transport: 75      // Helpful but not crucial
         };
@@ -776,7 +776,7 @@ const PropertyAssessmentTool: React.FC = () => {
               <Card>
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-lg font-semibold">Points of Interest</h3>
-                  <div className="text-2xl font-bold">{results.poi.score}/250</div>
+                  <div className="text-2xl font-bold">{results.poi.score}/200</div>
                 </div>
                 <div className="space-y-3">
                   {(Object.entries(results.poi.details) as [keyof PoiCategories, number][]).map(([category, count]) => (
