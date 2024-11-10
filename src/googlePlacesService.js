@@ -6,6 +6,7 @@ export const fetchPlacesData = async (address, apiKey) => {
       const geocodeResponse = await fetch(geocodeUrl);
       const geocodeData = await geocodeResponse.json();
   
+      
       if (geocodeData.status !== 'OK') {
         throw new Error('Failed to geocode address');
       }
